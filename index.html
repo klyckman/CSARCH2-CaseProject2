@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Binary64 · Machine 3</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="calculator.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="bar">
+        <strong>Binary64</strong>
+        <nav aria-label="Calculator modes">
+          <button type="button" aria-pressed="true">Conversion</button>
+          <button type="button" aria-pressed="false">Rounding</button>
+          <button type="button" aria-pressed="false">Addition</button>
+          <button type="button" aria-pressed="false">Multiplication</button>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <small>CSARCH2 &nbsp; / &nbsp; MACHINE 03</small>
+      <h1>Conversion</h1>
+      <div class="workspace">
+        <form>
+          <h2>Inputs</h2>
+          <label hidden id="formatLabel">
+            <span>Input format</span>
+            <select id="format">
+              <option>Decimal</option>
+              <option>Binary</option>
+              <option>IEEE hexadecimal</option>
+            </select>
+          </label>
+          <label>
+            <span id="firstLabel">Decimal value</span>
+            <input id="first" value="13.25" required autocomplete="off" spellcheck="false">
+          </label>
+          <label hidden id="secondLabel">
+            Operand B
+            <input id="second" autocomplete="off" spellcheck="false">
+          </label>
+          <label hidden id="precisionLabel">
+            <span>Significant digits</span>
+            <input id="precision" type="number" min="1" max="1024" step="1" value="4">
+          </label>
+          <button class="action">Convert</button>
+        </form>
+        <section aria-live="polite">
+          <h2>Result</h2>
+          <p id="status"></p>
+          <div id="encoding">
+            <small>Binary representation</small>
+            <div class="bits">
+              <div>
+                <b>Sign</b>
+                <code id="part0"></code>
+              </div>
+              <div>
+                <b>Exponent</b>
+                <code id="part1"></code>
+              </div>
+              <div>
+                <b>Fraction</b>
+                <code id="part2"></code>
+              </div>
+            </div>
+            <small>Hexadecimal</small>
+            <output id="hex"></output>
+            <div id="decRow" hidden>
+              <small>Decimal</small>
+              <output id="decimal"></output>
+            </div>
+          </div>
+          <dl hidden id="rounded">
+            <dt>Chopping</dt>
+            <dd></dd>
+            <dt>Toward +∞</dt>
+            <dd></dd>
+            <dt>Toward −∞</dt>
+            <dd></dd>
+            <dt>Nearest, ties to even</dt>
+            <dd></dd>
+          </dl>
+          <details hidden>
+            <summary>Step-by-step GRS solution</summary>
+            <ol></ol>
+          </details>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
